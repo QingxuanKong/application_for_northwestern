@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Aha Shop | Catalog</title>
+
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700%7CRaleway:300,400,700%7CPlayfair+Display:700'
+          rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Css -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'item_recommend/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/magnific-popup.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/font-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/sliders.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/animate.min.css' %}"/>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
+
+</head>
+
+<body class="relative">
+
+<!-- Preloader -->
+<div class="loader-mask">
+    <div class="loader">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<main class="main-container oh">
+
+    <!-- Navigation -->
+    <header class="nav-type-1">
+
+        <div class="top-bar hidden-sm hidden-xs">
+            <div class="container">
+                <div class="top-bar-line">
+                    <div class="row">
+                        <div class="top-bar-links">
+                            <ul class="col-sm-6 top-bar-acc">
+                                {% if user %}
+                                <li class="top-bar-link"><a href="{% url 'wishlist' %}">My Wishlist</a></li>
+                                <li class="top-bar-link"><a href="{% url 'logout' %}">Logout</a></li>
+                                {% else %}
+                                <li class="top-bar-link"><a href="accounts/login">Login</a></li>
+                                <li class="top-bar-link"><a href="{% url 'register' %}">Register</a></li>
+                                {% endif %}
+                            </ul>
+
+                            <ul class="col-sm-6 text-right top-bar-currency-language">
+                                <li>
+                                    Currency: <a href="#">USD<i class="fa fa-angle-down"></i></a>
+                                    <div class="currency-dropdown">
+                                </li>
+                                <li class="language">
+                                    Language: <a href="#">ENG<i class="fa fa-angle-down"></i></a>
+                                </li>
+                                <li>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-vimeo"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end top bar -->
+
+        <nav class="navbar navbar-static-top">
+            <div class="navigation" id="sticky-nav">
+                <div class="container relative">
+                    <div class="row">
+
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div> <!-- end navbar-header -->
+
+                        <div class="header-wrap">
+                            <div class="header-wrap-holder">
+
+                                <!-- Search -->
+                                <div class="nav-search hidden-sm hidden-xs">
+                                    <form method="get" action="{% url 'catalog'%}">
+                                        <input type="search" class="form-control" placeholder="Search" name="search">
+                                        <button type="submit" class="search-button">
+                                            <i class="icon icon_search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Logo -->
+                                <div class="logo-container">
+                                    <div class="logo-wrap text-center">
+                                        <a href="{% url 'homepage' %}">
+                                            <img class="logo" src="{% static 'img/logo_dark.png' %}" alt="logo">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Cart -->
+                                <div class="nav-cart-wrap hidden-sm hidden-xs">
+                                </div> <!-- end cart -->
+
+                            </div>
+                        </div> <!-- end header wrap -->
+
+                        <div class="nav-wrap">
+                            <div class="collapse navbar-collapse" id="navbar-collapse">
+
+                                <ul class="nav navbar-nav">
+
+                                    <li class="dropdown">
+                                        <a href="{% url 'homepage' %}">Home</a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="{% url 'catalog' %}">Category</a>
+                                    </li>
+
+                                </ul> <!-- end menu -->
+                            </div> <!-- end collapse -->
+                        </div> <!-- end col -->
+
+                    </div> <!-- end row -->
+                </div> <!-- end container -->
+            </div> <!-- end navigation -->
+        </nav> <!-- end navbar -->
+    </header> <!-- end navigation -->
+
+    <!-- Breadcrumbs -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li>
+                <a href="{% url 'homepage' %}">Home</a>
+            </li>
+            <li class="active">
+                <a href="{% url 'wishlist' %}">Wishlist</a>
+            </li>
+        </ol>
+    </div> <!-- end breadcrumbs -->
+
+    <!-- Catalogue -->
+    <section class="section-wrap pt-70 pb-40 catalogue">
+        <div class="container relative">
+            <div class="row">
+
+                <div class="col-md-12 catalogue-col right mb-50">
+
+                    <div class="shop-filter">
+                        <p class="result-count">Showing: {{item_lower_range}}-{{item_upper_range}} of {{total_item_cnt}}
+                            results</p>
+                    </div>
+
+                    <div class="shop-catalogue grid-view left">
+
+                        <div class="row row-10 items-grid">
+
+                            {% for item in items %}
+                            <div class="col-md-3 col-xs-3">
+                                <div class="product-item">
+                                    <div class="product-img">
+
+                                        {% if item.image|stringformat:'s' == '' %}
+                                        <img src="{% static 'img/no-image.png' %}" width="152" height="200" alt=""/>
+                                        {% else %}
+                                        <img src={{item.get_image}} width="152" height="200" alt=""/>
+                                        {% endif %}
+
+                                        <div class="product-actions">
+                                            <form method="post" action="{% url 'remove_from_wishlist' item.asin %}">
+                                                {% csrf_token %}
+                                                <button data-toggle="tooltip" data-placement="bottom" type="submit"
+                                                        name="remove-from-wishlist" value="remove-from-wishlist"
+                                                        title="Remove from wishlist">
+                                                    <i class="fa fa-heart"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                        <a href="{% url 'item' item.asin %}" class="product-quickview">Quick View</a>
+                                    </div>
+                                    <div class="product-details">
+                                        <h3 class="product-title">
+                                            <a href="{% url 'item' item.asin %}">{{item.title}}</a>
+                                        </h3>
+                                        <span class="price">
+                                            <ins>
+                                                <span class="amount">
+                                                    {% if item.price|stringformat:'s' == 'None' %}
+                                                        Error Price
+                                                    {% else %}
+                                                        ${{item.price}}
+                                                    {% endif %}
+                                                </span>
+                                          </ins>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div> <!-- end row -->
+                    </div> <!-- end grid mode -->
+
+                    <div class="clear"></div>
+
+                    <!-- Pagination -->
+                    <div class="pagination-wrap">
+                        <p class="result-count">Showing: {{item_lower_range}}-{{item_upper_range}} of {{total_item_cnt}}
+                            results</p>
+                        <nav class="pagination right clear">
+                            <a href="{{request.get_full_path}}&page={{previous_page}}"><i class="fa fa-angle-left"></i></a>
+                            {% for num in page_num %}
+                            <a href="{{request.get_full_path}}&page={{num}}">{{num}}</a>
+                            {% endfor %}
+                            <a href="{{request.get_full_path}}&page={{next_page}}"><i class="fa fa-angle-right"></i></a>
+                        </nav>
+                    </div>
+
+                </div> <!-- end col -->
+
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+    </section> <!-- end catalogue -->
+
+    <!-- Footer Type-1 -->
+    <footer class="footer footer-type-1 bg-white">
+        <div class="container">
+            <div class="footer-widgets top-bottom-dividers pb-mdm-20">
+                <div class="row">
+
+                    <div class="col-md-2 col-sm-4 col-xs-4 col-xxs-12">
+                        <div class="widget footer-links">
+                            <h5 class="widget-title uppercase">Information</h5>
+                            <ul class="list-no-dividers">
+                                <li><a href="#">Our stores</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Business with us</a></li>
+                                <li><a href="#">Delivery information</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-4 col-xxs-12">
+                        <div class="widget footer-links">
+                            <h5 class="widget-title uppercase">Help</h5>
+                            <ul class="list-no-dividers">
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Track order</a></li>
+                                <li><a href="#">F.A.Q</a></li>
+                                <li><a href="#">Privacy policy</a></li>
+                                <li><a href="#">Returns</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-4 col-xxs-12">
+                        <div class="widget footer-links">
+                            <h5 class="widget-title uppercase">Account</h5>
+                            <ul class="list-no-dividers">
+                                <li><a href="#">My account</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">Order history</a></li>
+                                <li><a href="#">Special gifts</a></li>
+                                <li><a href="#">Track order</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="widget">
+                            <h5 class="widget-title uppercase">about us</h5>
+                            <p class="mb-0">A-ha Shop is a e-commerce platform for fashion products. We provide personal
+                                recommendation for your better shopping experience.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="widget footer-get-in-touch">
+                            <h5 class="widget-title uppercase">Contact</h5>
+                            <address class="footer-address"><span>Address:</span> No. 1882, West Yan'an Road, Shanghai,
+                                China
+                            </address>
+                            <p>Phone: <a href="tel:+1-888-1554-456-123">+ 86-15221037273 </a></p>
+                            <p>Email: <a href="mailto:themesupport@gmail.com">kongqingxuan98@gmail.com</a></p>
+                            <div class="social-icons rounded mt-20">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-vimeo"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end stay in touch -->
+
+                </div>
+            </div>
+        </div> <!-- end container -->
+
+        <div class="bottom-footer bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 copyright sm-text-center">
+              <span>
+                &copy; 2021 A-ha Shop, Made by Qingxuan</a>
+              </span>
+                    </div>
+
+                    <div class="col-sm-4 text-center">
+                        <div id="back-to-top">
+                            <a href="#top">
+                                <i class="fa fa-angle-up"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12 footer-payment-systems text-right sm-text-center mt-sml-10">
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-amex"></i>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end bottom footer -->
+    </footer> <!-- end footer -->
+
+    <div id="back-to-top">
+        <a href="#top"><i class="fa fa-angle-up"></i></a>
+    </div>
+
+</main> <!-- end main container -->
+
+<!-- jQuery Scripts -->
+<script type="text/javascript" src="{% static 'item_recommend/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'item_recommend/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'item_recommend/js/plugins.js' %}"></script>
+<script type="text/javascript" src="{% static 'item_recommend/js/scripts.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Aha Shop | Login</title>
+
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700%7CRaleway:300,400,700%7CPlayfair+Display:700'
+          rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Css -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'item_recommend/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/magnific-popup.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/font-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/sliders.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'item_recommend/css/animate.min.css' %}"/>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
+
+</head>
+
+<body>
+
+<!-- Preloader -->
+<div class="loader-mask">
+    <div class="loader">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<main class="content-wrapper oh">
+
+    <!-- Navigation -->
+    <header class="nav-type-1">
+
+        <div class="top-bar hidden-sm hidden-xs">
+            <div class="container">
+                <div class="top-bar-line">
+                    <div class="row">
+                        <div class="top-bar-links">
+                            <ul class="col-sm-6 top-bar-acc">
+                                <li class="top-bar-link"><a href="accounts/login">Login</a></li>
+                            </ul>
+
+                            <ul class="col-sm-6 text-right top-bar-currency-language">
+                                <li>
+                                    Currency: <a href="#">USD<i class="fa fa-angle-down"></i></a>
+                                    <div class="currency-dropdown">
+                                </li>
+                                <li class="language">
+                                    Language: <a href="#">ENG<i class="fa fa-angle-down"></i></a>
+                                </li>
+                                <li>
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-vimeo"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end top bar -->
+
+        <nav class="navbar navbar-static-top">
+            <div class="navigation" id="sticky-nav">
+                <div class="container relative">
+                    <div class="row">
+
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div> <!-- end navbar-header -->
+
+                        <div class="header-wrap">
+                            <div class="header-wrap-holder">
+
+                                <!-- Search -->
+                                <div class="nav-search hidden-sm hidden-xs">
+                                    <form method="get" action="{% url 'catalog'%}">
+                                        <input type="search" class="form-control" placeholder="Search" name="search">
+                                        <button type="submit" class="search-button">
+                                            <i class="icon icon_search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Logo -->
+                                <div class="logo-container">
+                                    <div class="logo-wrap text-center">
+                                        <a href="{% url 'homepage' %}">
+                                            <img class="logo" src="{% static 'img/logo_dark.png' %}" alt="logo">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Cart -->
+                                <div class="nav-cart-wrap hidden-sm hidden-xs">
+                                </div> <!-- end cart -->
+
+                            </div>
+                        </div> <!-- end header wrap -->
+
+                        <div class="nav-wrap">
+                            <div class="collapse navbar-collapse" id="navbar-collapse">
+
+                                <ul class="nav navbar-nav">
+
+                                    <li class="dropdown">
+                                        <a href="{% url 'homepage' %}">Home</a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="{% url 'catalog' %}">Category</a>
+                                    </li>
+
+                                </ul> <!-- end menu -->
+                            </div> <!-- end collapse -->
+                        </div> <!-- end col -->
+
+                    </div> <!-- end row -->
+                </div> <!-- end container -->
+            </div> <!-- end navigation -->
+        </nav> <!-- end navbar -->
+    </header> <!-- end navigation -->
+
+    <!-- Page Title -->
+    <section class="page-title text-center">
+        <div class="container relative clearfix">
+            <div class="title-holder">
+                <div class="title-text">
+                    <h1 class="uppercase">My Account</h1>
+                </div>
+            </div>
+        </div>
+    </section> <!-- end page title -->
+
+    <!-- login -->
+    <section class="section-wrap login-register pt-0 pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-4 mb-40">
+                    <div class="login">
+                        <form method="post" action="{% url 'register' %}">
+                            {% csrf_token %}
+                            <h4 class="uppercase">Register</h4>
+                            <p class="form-row form-row-wide">
+                                <label>username
+                                    <abbr class="required" title="required">*</abbr>
+                                </label>
+                                    {{form.username}}
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label>password
+                                    <abbr class="required" title="required">*</abbr>
+                                </label>
+                                    {{form.password1}}
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label>password confirmation
+                                    <abbr class="required" title="required">*</abbr>
+                                </label>
+                                    {{form.password2}}
+                            </p>
+                            <input type="submit" value="Login" class="btn">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- end login -->
+
+
+    <!-- Footer Type-1 -->
+    <footer class="footer footer-type-1 bg-white">
+        <div class="container">
+            <div class="footer-widgets top-bottom-dividers pb-mdm-20">
+                <div class="row">
+
+                    <div class="col-md-2 col-sm-4 col-xs-4 col-xxs-12">
+                        <div class="widget footer-links">
+                            <h5 class="widget-title uppercase">Information</h5>
+                            <ul class="list-no-dividers">
+                                <li><a href="#">Our stores</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Business with us</a></li>
+                                <li><a href="#">Delivery information</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-4 col-xxs-12">
+                        <div class="widget footer-links">
+                            <h5 class="widget-title uppercase">Help</h5>
+                            <ul class="list-no-dividers">
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Track order</a></li>
+                                <li><a href="#">F.A.Q</a></li>
+                                <li><a href="#">Privacy policy</a></li>
+                                <li><a href="#">Returns</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4 col-xs-4 col-xxs-12">
+                        <div class="widget footer-links">
+                            <h5 class="widget-title uppercase">Account</h5>
+                            <ul class="list-no-dividers">
+                                <li><a href="#">My account</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">Order history</a></li>
+                                <li><a href="#">Special gifts</a></li>
+                                <li><a href="#">Track order</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="widget">
+                            <h5 class="widget-title uppercase">about us</h5>
+                            <p class="mb-0">A-ha Shop is a e-commerce platform for fashion products. We provide personal
+                                recommendation for your better shopping experience.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="widget footer-get-in-touch">
+                            <h5 class="widget-title uppercase">Contact</h5>
+                            <address class="footer-address"><span>Address:</span> No. 1882, West Yan'an Road, Shanghai,
+                                China
+                            </address>
+                            <p>Phone: <a href="tel:+1-888-1554-456-123">+ 86-15221037273 </a></p>
+                            <p>Email: <a href="mailto:themesupport@gmail.com">kongqingxuan98@gmail.com</a></p>
+                            <div class="social-icons rounded mt-20">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-vimeo"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end stay in touch -->
+
+                </div>
+            </div>
+        </div> <!-- end container -->
+
+        <div class="bottom-footer bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 copyright sm-text-center">
+              <span>
+                &copy; 2021 A-ha Shop, Made by Qingxuan</a>
+              </span>
+                    </div>
+
+                    <div class="col-sm-4 text-center">
+                        <div id="back-to-top">
+                            <a href="#top">
+                                <i class="fa fa-angle-up"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12 footer-payment-systems text-right sm-text-center mt-sml-10">
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-amex"></i>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end bottom footer -->
+    </footer> <!-- end footer -->
+
+    <div id="back-to-top">
+        <a href="#top"><i class="fa fa-angle-up"></i></a>
+    </div>
+
+</main> <!-- end main container -->
+
+
+<!-- jQuery Scripts -->
+<script type="text/javascript" src="{% static 'item_recommend/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'item_recommend/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'item_recommend/js/plugins.js' %}"></script>
+<script type="text/javascript" src="{% static 'item_recommend/js/scripts.js' %}"></script>
+
+</body>
+</html>
